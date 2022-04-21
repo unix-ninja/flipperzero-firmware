@@ -1,6 +1,8 @@
 #include "applications.h"
 #include <assets_icons.h>
 
+#define APP_WREN 1
+
 // Services
 extern int32_t rpc_srv(void* p);
 extern int32_t bt_srv(void* p);
@@ -44,6 +46,7 @@ extern int32_t bt_hid_app(void* p);
 extern int32_t battery_test_app(void* p);
 
 // Plugins
+extern int32_t wren_app(void* p);
 extern int32_t music_player_app(void* p);
 extern int32_t snake_game_app(void* p);
 
@@ -212,6 +215,10 @@ const FlipperApplication FLIPPER_PLUGINS[] = {
 
 #ifdef APP_MUSIC_PLAYER
     {.app = music_player_app, .name = "Music Player", .stack_size = 1024, .icon = &A_Plugins_14},
+#endif
+
+#ifdef APP_WREN
+    {.app = wren_app, .name = "Run scripts", .stack_size = 1024, .icon = NULL},
 #endif
 
 #ifdef APP_SNAKE_GAME
